@@ -7,14 +7,15 @@ require "faker"
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 10.times do
-  Department.create(
+  d= Department.create(
     name: Faker::Commerce.department
   )
   20.times do
     Item.create(
       name: Faker::Commerce.product_name,
       price: Faker::Commerce.price.to_f,
-      description: Faker::Lorem.sentence
+      description: Faker::Lorem.sentence,
+      department_id: d.id
     )
   end
 end
